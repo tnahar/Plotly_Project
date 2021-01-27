@@ -59,12 +59,26 @@ function showData() {
             
             Plotly.newPlot('bar', data);
         });
+         // gauge chart
+
+         var gaugeData = [
+            {
+              domain: { x: [0, 1], y: [0, 1] },
+              value: metadata.wfreq,
+              title: { text: "Belly Button Washing Frequency <br> Scrubs per Week" },
+              type: "indicator",
+              mode: "gauge+number",
+              delta: { reference: 400 },
+              gauge: { axis: { range: [0, 9] } }
+            }
+          ];
+          
+          var layout = { width: 600, height: 400 };
+          Plotly.newPlot('gauge', gaugeData, layout);
+   
 
     });
-    
-
 }
-
 function optionChanged() {
     d3.select('select').on('change', function () {
         showData();
